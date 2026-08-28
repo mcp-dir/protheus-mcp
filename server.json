@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mcp-dir/protheus-mcp",
+  "title": "TOTVS Protheus",
+  "description": "TOTVS Protheus ERP for AI: stock, sales, orders, customers and MRP. Read-only, official API.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/mcp-dir/protheus-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.mcp.ai/p_protheus"
+    }
+  ]
+}

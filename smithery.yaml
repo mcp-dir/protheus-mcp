@@ -1,0 +1,38 @@
+# Smithery configuration for TOTVS Protheus
+# Schema: https://smithery.ai/docs/build/project-config
+# Remote HTTP MCP — server hosted at https://api.mcp.ai/p_protheus
+
+name: protheus-mcp
+displayName: "TOTVS Protheus"
+description: >
+  Converse com o **TOTVS Protheus** da sua empresa a partir do Claude, do ChatGPT ou de qualquer cliente MCP. Roda sobre a **API REST oficial da TOTVS**, contra a **sua própria instalação**: você informa a URL do serviço REST, o usuário e a senha do Protheus, e nada trafega por um intermediário do ERP. Diferente dos MCPs de Protheus que já existem, que são ferramentas de desenvolvimento (compilar AdvPL, buscar no TDN), este lê **dado de negócio**: filiais, clientes e fornecedores, produtos, estoque, tabelas de preço, vendas e pedidos, notas, ordens de produção e compras do MRP. Somente leitura. **Não afiliado à TOTVS.**
+
+version: 0.1.0
+license: MIT
+homepage: https://github.com/mcp-dir/protheus-mcp
+repository: https://github.com/mcp-dir/protheus-mcp
+
+tags:
+  - totvs
+  - protheus
+  - erp
+  - brazil
+  - backoffice
+  - estoque
+  - financeiro
+  - mrp
+  - read-only
+
+# Remote HTTP MCP — sem startCommand local (servidor já hospedado)
+startCommand:
+  type: http
+  url: https://api.mcp.ai/p_protheus
+
+auth:
+  type: oauth2
+  resourceMetadataUrl: https://api.mcp.ai/p_protheus/.well-known/oauth-protected-resource
+  fallback:
+    type: agent-auth
+    description: >
+      Para clientes sem OAuth 2.1. O agente expõe uma tool authenticate(token).
+      Usuário gera o JWT em https://app.mcp.ai/agent-auth e cola no chat.
